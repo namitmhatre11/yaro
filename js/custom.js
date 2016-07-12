@@ -17,20 +17,15 @@ $.post("get_tweet.php",
         if(data) {
         	var dataList = JSON.parse(data);
 
-        	$('.leftQuestion').html(dataList[2]);
         	$('.leftQuestionProfile').html("@" + dataList[0]);
-        	$('.leftQuestionProfilePic').attr('src',dataList[1]);
+            $('.leftQuestionProfilePic').attr('src',dataList[1]);
+            $('.leftQuestion').html(dataList[2]);
         	$('.leftAnswer').html(dataList[3]);
 
         	if(dataList[4] != "") {
-        		$('.left-btm-content').css('background-image',"url("+dataList[4]+")");
-        		//$('.left-btm-content').css('background-size',"no-repeat");
+                var image = "<img src='"+dataList[4]+"'>";
+                $('.leftAnswer').append(image);
         	}
-        	else {
-        		$('.left-btm-content').css('background-image',"url('img/tw-bg.png')");
-        		//$('.left-btm-content').css('background-size',"contain;");
-        	}
-        	console.log(dataList[5]);
         	nextVars = dataList[5];
         }
     });

@@ -49,10 +49,10 @@
             </div>
           </div>
           <div class="left-btm-wrpr">
-            <div class="left-btm-header leftAnswer">
+            <div class="left-btm-header">
               Main sab jaanta hoon. Main hoon #SABKaYARO
             </div>
-            <div class="left-btm-content">
+            <div class="left-btm-content leftAnswer">
               
             </div>
             <div class="rght-btm-footer">
