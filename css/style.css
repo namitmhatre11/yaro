@@ -1,0 +1,84 @@
+@font-face {
+  font-family: 'Roboto-Bold';
+  src: url('../fonts/Roboto-Bold.eot?#iefix') format('embedded-opentype'),  url('../fonts/Roboto-Bold.woff') format('woff'), url('../fonts/Roboto-Bold.ttf')  format('truetype'), url('../fonts/Roboto-Bold.svg#Roboto-Bold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Roboto-Light';
+  src: url('../fonts/Roboto-Light.eot?#iefix') format('embedded-opentype'),  url('../fonts/Roboto-Light.woff') format('woff'), url('../fonts/Roboto-Light.ttf')  format('truetype'), url('../fonts/Roboto-Light.svg#Roboto-Light') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Roboto-Medium';
+  src: url('../fonts/Roboto-Medium.eot?#iefix') format('embedded-opentype'),  url('../fonts/Roboto-Medium.woff') format('woff'), url('../fonts/Roboto-Medium.ttf')  format('truetype'), url('../fonts/Roboto-Medium.svg#Roboto-Medium') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Roboto-Regular';
+  src: url('../fonts/Roboto-Regular.eot?#iefix') format('embedded-opentype'),  url('../fonts/Roboto-Regular.woff') format('woff'), url('../fonts/Roboto-Regular.ttf')  format('truetype'), url('../fonts/Roboto-Regular.svg#Roboto-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto-Thin';
+  src: url('../fonts/Roboto-Thin.eot?#iefix') format('embedded-opentype'),  url('../fonts/Roboto-Thin.woff') format('woff'), url('../fonts/Roboto-Thin.ttf')  format('truetype'), url('../fonts/Roboto-Thin.svg#Roboto-Thin') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+html {position: relative;min-height: 100%;}
+body {margin-bottom: 131px;background-image: url('../img/main-bg.jpg');background-size: cover;background-position: center;background-repeat: no-repeat;font-family: 'Roboto-Regular';padding-bottom: 30px;}
+.sony-sab-logo{position: absolute;right: 0;top: 30px;}
+.yaro-txt-sub{font-size: 20px;color: #fff;font-family: 'Roboto-Bold';text-shadow: 0 1px 0 rgba(0, 0, 0, 0.52);margin-top: 5px;}
+.sabke-txt{font-size: 17px;font-family: 'Roboto-Medium';color: #fff;;text-shadow: 0 1px 0 rgba(0, 0, 0, 0.52);margin:10px 0;}
+.sabke-txt-left{margin-top: 25px;}
+.input-header {position: relative;background-color: #036bc1;padding: 0 31px 0 10px;color: #fff;height: 26px;line-height: 26px;font-size: 13px;}
+.input-header img {position: absolute;top: 6px;right: 10px;}
+.input-container textarea {display: block;width: 100%;height: 75px;border: 0;outline: none;-webkit-appearance: none;border-radius: 0;background-color: transparent;}
+.input-container {padding: 10px;background-color: #fff;text-align: right;}
+.input-container .btn-tweet {background-color: #1575c5;color: #fff;border: 0;border-left: 1px solid #1264a9;border-bottom: 1px solid #1264a9;width: 58px;height: 22px;font-size: 14px;padding: 0;line-height: 22px;text-align: center;margin-top: 10px;border-radius: 0;}
+.input-wrpr {border-radius: 3px;overflow: hidden;}
+.rght-btm-wrpr{background-color: #036bc1;border-radius: 3px;margin-top: 25px}
+.rght-btm-footer{position: relative;height: 28px;text-align: right;padding-right: 40px;}
+.rght-btm-footer img{position: absolute;right: 0;top: 0;}
+.rght-btm-footer .yaro-name{color: #fff;font-size: 14px;margin-bottom: 0;line-height: 28px;}
+.rght-btm-content{height: 220px;padding: 10px 15px 10px;font-size: 18px;color: #719dd4;}
+.left-tp-wrpr{background-color: #fff;border-radius: 3px;overflow: hidden;}
+.left-tp-content{height: 136px;padding:35px 25px;font-size: 18px;color: #333;}
+.left-tp-content span{color: #007dac;}
+.left-tp-footer .user-name{font-size: 14px;color: #fff;line-height: 28px;text-align: right;}
+.left-tp-footer{position: relative;height: 28px;padding: 0 40px 0 34px;background-color: #0098cd;}
+.left-tp-footer img{position: absolute;}
+.left-tp-footer .user-img{top: 0;right: 0;}
+.left-tp-footer .tw-img{left: 10px;top: 8px;}
+.left-btm-wrpr{background-color: #0098cd;color: #fff;margin-top: 25px;border-radius: 3px;}
+.left-btm-header{font-size: 14px;padding: 10px 10px 18px;}
+.left-btm-content{height: 155px;padding: 10px 10px 10px;}
+.logo-wrpr {margin: 15px 0;}
+.left-btm-content{background-image: url('../img/tw-bg.png');background-size: contain;}
+
+.sticky-footer {position: absolute;bottom: 0;width: 100%; height: 131px;background-color: transparent;}
+.bottom-footer{background-color: #0f2467;height: 34px;}
+.bottom-footer .copy-txt{color: #fff;font-size: 11px;font-family: 'Roboto-Regular';line-height: 34px;margin-bottom: 0;}
+
+
+@media(max-width: 767px){
+  .lauch-date-wrpr{text-align: center;}
+  .lauch-date-wrpr img{width: 215px;}
+  .sticky-footer{height: 83px;}
+  body{margin-bottom: 83px;background-image: url('../img/main-bg-mob.jpg');background-position: top right;}
+  .logo-wrpr{text-align: left;}
+  .logo-wrpr img{width: 153px;}
+  .yaro-txt img{width: 145px;margin: 0;}
+  .yaro-txt-sub{max-width: 145px;font-size: 12px;}
+  .sony-sab-logo{top: 6px;right: 10px;}
+  .sony-sab-logo img{width: 24px;}
+  .sabke-txt{font-size: 13px;max-width: 194px;}
+  .left-tp-content,.rght-btm-content{font-size: 16px;}
+  .left-main-wrpr{display: none;}
+  .back-btn{font-size: 20px;width: 80px;color: #fff;border: 0;outline: none;background-color: #dc262b;height: 32px;padding: 0;text-align: center;line-height: 32px;border-radius: 0;margin-top: 10px;}
+  .bottom-footer .copy-txt{font-size: 8px;}
+}
