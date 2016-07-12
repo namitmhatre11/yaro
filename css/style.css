@@ -58,7 +58,9 @@ body {margin-bottom: 131px;background-image: url('../img/main-bg.jpg');backgroun
 .left-btm-header{font-size: 14px;padding: 10px 10px 18px;}
 .left-btm-content{height: 155px;padding: 10px 10px 10px;}
 .logo-wrpr {margin: 15px 0;}
-.left-btm-content{background-image: url('../img/tw-bg.png');background-size: contain;}
+.margin-btm10{margin-bottom: 10px;}
+.margin-top10{margin-top: 10px;}
+.left-btm-content{overflow: auto; overflow-x: hidden;}
 
 .sticky-footer {position: absolute;bottom: 0;width: 100%; height: 131px;background-color: transparent;}
 .bottom-footer{background-color: #0f2467;height: 34px;}

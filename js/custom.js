@@ -23,7 +23,7 @@ $.post("get_tweet.php",
         	$('.leftAnswer').html(dataList[3]);
 
         	if(dataList[4] != "") {
-                var image = "<img src='"+dataList[4]+"'>";
+                var image = "<img class='img-responsive margin-top10' src='"+dataList[4]+"'>";
                 $('.leftAnswer').append(image);
         	}
         	nextVars = dataList[5];
