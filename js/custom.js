@@ -5,7 +5,9 @@ $(document).ready(function(){
 ajaxcall();
 
 setInterval(function(){ ajaxcall(); }, 10000);
-
+$(".toggele-btn").click(function(e){
+    $(".right-main-wrpr,.left-main-wrpr").toggle();
+});
 $(".sawaalForYaroTweet").click(function(e){
      e.preventDefault();
     if($.trim($('.sawaalForYaro').val()) == "") {

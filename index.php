@@ -63,6 +63,9 @@
               <img src="img/yaro-img.png">
             </div>
           </div>
+          <div class="visible-xs visible-sm clearfix text-center">
+            <button class="ask-que-btn btn toggele-btn">Puchiye Sawal apane Y.A.R.O se</button>
+          </div>
         </div>        
         <div class="col-md-3 col-xs-12 right-main-wrpr">
           <h2 class="sabke-txt">Puchiye sawaal #SABKaYARO ke saath aur Y.A.R.O dega jawab.</h2>
@@ -86,7 +89,7 @@
             </div>
           </div>
           <div class="visible-xs visible-sm clearfix">
-            <button class="back-btn btn pull-right">Back</button>
+            <button class="back-btn btn pull-right toggele-btn">Back</button>
           </div>          
         </div>
       </div>
