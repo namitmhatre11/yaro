@@ -72,8 +72,8 @@
               <img src="img/tw.png">
             </div>
             <div class="input-container">
-              <textarea placeholder="Pucho apne sawaal"></textarea>
-              <button class="btn btn-tweet">Tweet</button>              
+              <textarea placeholder="Pucho apne sawaal" class="sawaalForYaro" ></textarea>
+              <button class="btn btn-tweet sawaalForYaroTweet">Tweet</button>              
             </div>
           </div>
           <div class="rght-btm-wrpr">
