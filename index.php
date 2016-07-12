@@ -49,11 +49,11 @@
             </div>
           </div>
           <div class="left-btm-wrpr">
-            <div class="left-btm-header">
+            <!-- <div class="left-btm-header">
               Main sab jaanta hoon. Main hoon #SABKaYARO
-            </div>
+            </div> -->
             <div class="left-btm-content">
-              <img class="btn-block margin-btm10" src="img/tweet-top-banner.jpg">
+              <!-- <img class="btn-block margin-btm10" src="img/tweet-top-banner.jpg"> -->
               <div class="leftAnswer">
               
               </div>
@@ -65,7 +65,7 @@
           </div>
         </div>        
         <div class="col-md-3 col-xs-12 right-main-wrpr">
-          <h2 class="sabke-txt">Puchiye Sawaal #SABKaYARO ke saath aur Y.A.R.O dega jawab.</h2>
+          <h2 class="sabke-txt">Puchiye sawaal #SABKaYARO ke saath aur Y.A.R.O dega jawab.</h2>
           <div class="input-wrpr">
             <div class="input-header">
               <p class="user-name text-uppercase">@kartapandi</p>

@@ -69,7 +69,30 @@ $.post("get_tweet.php",
         	$('.leftQuestionProfile').html("@" + dataList[0]);
             $('.leftQuestionProfilePic').attr('src',dataList[1]);
             $('.leftQuestion').html(dataList[2]);
-        	$('.leftAnswer').html(dataList[3]);
+
+            var ans = linkify(dataList[3]);
+            function linkify(inputText) {
+                var replacedText, replacePattern1, replacePattern2, replacePattern3;
+
+                //URLs starting with http://, https://, or ftp://
+                replacePattern1 = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
+                replacedText = inputText.replace(replacePattern1, '<a href="$1" target="_blank">$1</a>');
+
+                //URLs starting with "www." (without // before it, or it'd re-link the ones done above).
+                replacePattern2 = /(^|[^\/])(www\.[\S]+(\b|$))/gim;
+                replacedText = replacedText.replace(replacePattern2, '$1<a href="http://$2" target="_blank">$2</a>');
+
+                //Change email addresses to mailto:: links.
+                replacePattern3 = /(([a-zA-Z0-9\-\_\.])+@[a-zA-Z\_]+?(\.[a-zA-Z]{2,6})+)/gim;
+                replacedText = replacedText.replace(replacePattern3, '<a href="mailto:$1">$1</a>');
+
+                return replacedText;
+            }
+
+        	$('.leftAnswer').html(ans);
+
+
+
 
         	if(dataList[4] != "") {
                 var image = "<img class='img-responsive margin-top10' src='"+dataList[4]+"'>";
