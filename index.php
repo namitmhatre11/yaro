@@ -30,13 +30,13 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-6 col-sm-push-3">
+        <div class="col-md-6 col-xs-12 col-md-push-3">
           <div class="yaro-txt">
             <img src="img/yaro-txt.png" class="img-responsive center-block">
           </div>
           <h2 class="yaro-txt-sub text-center">Pucho koi bhi sawaal, jawaab hai iske paas, <br>iske answers hai iske jaise khaas. </h2>          
         </div>
-        <div class="col-sm-3 col-sm-pull-6 left-main-wrpr">
+        <div class="col-md-3  col-xs-12 col-md-pull-6 left-main-wrpr">
           <h2 class="sabke-txt sabke-txt-left">Y.A.R.O de raha hai sabke jawaab.</h2>
           <div class="left-tp-wrpr">
             <div class="left-tp-content leftQuestion">
@@ -61,7 +61,7 @@
             </div>
           </div>
         </div>        
-        <div class="col-sm-3 right-main-wrpr">
+        <div class="col-md-3 col-xs-12 right-main-wrpr">
           <h2 class="sabke-txt">Puchiye Sawaal #SABKaYARO ke saath aur Y.A.R.O dega jawab.</h2>
           <div class="input-wrpr">
             <div class="input-header">
@@ -82,7 +82,7 @@
               <img src="img/yaro-img.png">
             </div>
           </div>
-          <div class="visible-xs clearfix">
+          <div class="visible-xs visible-sm clearfix">
             <button class="back-btn btn pull-right">Back</button>
           </div>          
         </div>

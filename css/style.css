@@ -65,11 +65,15 @@ body {margin-bottom: 131px;background-image: url('../img/main-bg.jpg');backgroun
 .bottom-footer .copy-txt{color: #fff;font-size: 11px;font-family: 'Roboto-Regular';line-height: 34px;margin-bottom: 0;}
 
 
-@media(max-width: 767px){
+.lauch-date-wrpr:after{position: absolute;content: '';width: 738px;height: 604px;right: 0;bottom: 0;background-image: url('../img/yaro-desk-img.png');z-index: -1;left: 0;margin: 0 auto;}
+@media(max-width: 1199px) and (min-width: 992px){
+.lauch-date-wrpr:after{background-size: cover;width: 650px;height: 532px;}
+}
+@media(max-width: 991px){
   .lauch-date-wrpr{text-align: center;}
   .lauch-date-wrpr img{width: 215px;}
   .sticky-footer{height: 83px;}
-  body{margin-bottom: 83px;background-image: url('../img/main-bg-mob.jpg');background-position: top right;}
+  body{margin-bottom: 83px;background-image: url('../img/main-bg-mob.jpg');background-position: center;}
   .logo-wrpr{text-align: left;}
   .logo-wrpr img{width: 153px;}
   .yaro-txt img{width: 145px;margin: 0;}
@@ -81,4 +85,7 @@ body {margin-bottom: 131px;background-image: url('../img/main-bg.jpg');backgroun
   .left-main-wrpr{display: none;}
   .back-btn{font-size: 20px;width: 80px;color: #fff;border: 0;outline: none;background-color: #dc262b;height: 32px;padding: 0;text-align: center;line-height: 32px;border-radius: 0;margin-top: 10px;}
   .bottom-footer .copy-txt{font-size: 8px;}
+  .logo-wrpr{position: relative;}
+  .logo-wrpr:after {position: absolute;content: '';width: 204px;height: 282px;right: -22px;top: 2px;background-image: url('../img/yaro-mob-img.png');z-index: -1;}
+  .lauch-date-wrpr:after{display: none;}
 }
