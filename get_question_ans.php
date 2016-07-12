@@ -99,22 +99,25 @@ foreach ($result as $key => $value) {
 }
 echo "<pre>";
 print_r($data);
-	
-	try {
-		$values = "";
-		foreach ($data as $key => $value) {
-		$newValue = "('".implode("','", $value)."')";
-		$values .= !empty($values) ? ",".$newValue : $newValue;
+
+	if(!empty($data)){
+		try {
+			$values = "";
+			foreach ($data as $key => $value) {
+			$newValue = "('".implode("','", $value)."')";
+			$values .= !empty($values) ? ",".$newValue : $newValue;
+			}
+
+			$query = $conn->prepare("INSERT INTO `yaro_tweets_data` (`".implode("`,`", array_keys($data[0]))."`) VALUES $values");
+
+			$query->execute();
+			echo "New records created successfully";
 		}
-
-		$query = $conn->prepare("INSERT INTO `yaro_tweets_data` (`".implode("`,`", array_keys($data[0]))."`) VALUES $values");
-
-		$query->execute();
-		echo "New records created successfully";
+		catch(PDOException $e)
+		{
+			echo "Error: " . $e->getMessage();
+		}
 	}
-	catch(PDOException $e)
-	{
-		echo "Error: " . $e->getMessage();
-	}
+		
 
 ?>
