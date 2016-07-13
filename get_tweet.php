@@ -9,18 +9,25 @@ if($_POST && isset($_POST['mode'])){
 
 	if($_POST['mode'] == "saveTweet"){
 
+	$logfile = false;	
+	$resfileName = "log_".date('d_m_Y_H_i_s').".txt";
+	$myfile = fopen("log/".$resfileName, "w") or die("Unable to open file!");	
+		
 	require_once('tweetConfig.php');
 
 	$loc = "http://localhost/yaro/";
 	
 	$tweetText = $_POST['tweetText']." ".$loc;	
 
+	writeLog("tweetText: ".$tweetText);
+
 	$tweetTiD = getTweetByText($tweetText);
 
 	$responseText = "";
+	set_time_limit(300);
 
 	if($tweetTiD) {
-
+		writeLog("tweetId done");
 		$variable = array();
 
 		$variable['question'] = $tweetText;
@@ -29,7 +36,7 @@ if($_POST && isset($_POST['mode'])){
 		$query = $conn->prepare("INSERT INTO `yaro_tweet_question` (`".implode("`,`", array_keys($variable))."`) VALUES ('".implode("','", $variable)."')");
 
 		$query->execute();
-		fetchtweets();
+		//fetchtweets();
 		$responseData = fetchTweetResponse($tweetTiD);
 		$responseVar['dataResponse'] = $responseData;
 		$responseVar['status'] = true;
@@ -39,7 +46,8 @@ if($_POST && isset($_POST['mode'])){
 		$responseVar['message'] = "Unable to find tweet.";
 		$responseVar['status'] = false;
 	}
-
+	fclose($myfile);
+	set_time_limit(30);
 	echo json_encode($responseVar);
 	exit();
 
@@ -86,6 +94,8 @@ function getTweetByText($tweetText) {
 
 		$getfield = '?q='.urlencode($tweetText);
 
+		writeLog("tweetQuery: ".$getfield);
+
 		$response = $GLOBALS['twitterAPI']->setGetfield($getfield)
         ->buildOauth('https://api.twitter.com/1.1/search/tweets.json', 'GET')
         ->performRequest();
@@ -94,16 +104,17 @@ function getTweetByText($tweetText) {
         if(!empty($response) && count($response->statuses)) {
 
 			$statusesVar = $response->statuses;
-
+			writeLog("tweetId: ".$statusesVar[0]->id);
 			return $statusesVar[0]->id;
         }
         else {
+        	writeLog("tweetQuery No result");
         	return getTweetByText($tweetText);
         }
 
 	}
 	catch(Exception $e) {
-
+		writeLog("tweetQuery Error");
 		return getTweetByText($tweetText);
 	}
 
@@ -114,12 +125,22 @@ function fetchTweetResponse($tweetID) {
 		$stmt = $GLOBALS['conn']->prepare("SELECT reply_id,ans FROM yaro_tweets_data where tweet_id = '".$tweetID."'  ORDER BY `timestamp` DESC LIMIT 1"); 
 		$stmt->execute();
 		$result = $stmt->fetch(PDO::FETCH_NUM);
-
+		writeLog("fetchTweetResponse");
 		if(!isset($result)){
+			writeLog("fetchTweetResponse before sleep");
 			sleep(5);
+			writeLog("fetchTweetResponse after sleep");
+			return fetchTweetResponse($tweetID);
+		}
+		else if($result == false) {
+			writeLog("fetchTweetResponse before ok false");
+			sleep(5);
+			writeLog("fetchTweetResponse after ok false");
 			return fetchTweetResponse($tweetID);
 		}
 		else {
+			writeLog("fetchTweetResponse result ok");
+			writeLog("fetchTweetResponse result ok".json_encode($result));
 			return $result;
 		}
 
@@ -199,5 +220,11 @@ function fetchtweets() {
 	}
 	catch(Exception $e) {}
 
+}
+function writeLog($logText) {
+
+	if($GLOBALS['logfile'] == true) {
+		fwrite($GLOBALS['myfile'],"\n".$logText." ".date('d_m_Y_H_i_s'));
+	}
 }
 ?>
