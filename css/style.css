@@ -69,6 +69,40 @@ body {margin-bottom: 131px;background-image: url('../img/main-bg.jpg');backgroun
 
 
 .lauch-date-wrpr:after{position: absolute;content: '';width: 738px;height: 604px;right: 0;bottom: 0;background-image: url('../img/yaro-desk-img.png');z-index: -1;left: 0;margin: 0 auto;}
+
+
+table,td
+{
+ padding:15px;
+ border-collapse:collapse;
+}
+#data td
+{
+ padding:10px;
+ border-collapse:collapse;
+ position:relative;
+ font-family:Verdana, Geneva, sans-serif;
+}
+
+a
+{
+ text-decoration:none;
+ color:#00a2d1;
+ font-family:"Courier New", Courier, monospace;
+ font-weight:bold;
+ font-family:Tahoma, Geneva, sans-serif;
+}
+#footer
+{
+ text-align:center;
+ margin-top:50px;
+}
+
+
+
+@media(min-width: 1200px) and (max-height: 800px){
+  .lauch-date-wrpr:after{background-size: cover;width: 650px;height: 532px;}
+}
 @media(max-width: 1199px) and (min-width: 992px){
 .lauch-date-wrpr:after{background-size: cover;width: 650px;height: 532px;}
 }

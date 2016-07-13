@@ -14,7 +14,7 @@ $(".sawaalForYaroTweet").click(function(e){
     if(sawaalText == "") {
         alert("Please enter your question for Y.A.R.O using #SABKaYARO.");
     } 
-    else if(sawaalText.search("#SABKaYARO") == -1) {
+    else if(sawaalText.search("#SABKaYaroDemo1") == -1) {
         alert("Please enter hashtag #SABKaYARO.");    
     }   
     else {

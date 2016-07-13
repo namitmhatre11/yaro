@@ -29,7 +29,7 @@ if($_POST && isset($_POST['mode'])){
 		$query = $conn->prepare("INSERT INTO `yaro_tweet_question` (`".implode("`,`", array_keys($variable))."`) VALUES ('".implode("','", $variable)."')");
 
 		$query->execute();
-		fetchtweets();
+		//fetchtweets();
 		$responseData = fetchTweetResponse($tweetTiD);
 		$responseVar['dataResponse'] = $responseData;
 		$responseVar['status'] = true;
