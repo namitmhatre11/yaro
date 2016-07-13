@@ -49,11 +49,7 @@
             </div>
           </div>
           <div class="left-btm-wrpr">
-            <!-- <div class="left-btm-header">
-              Main sab jaanta hoon. Main hoon #SABKaYARO
-            </div> -->
             <div class="left-btm-content">
-              <!-- <img class="btn-block margin-btm10" src="img/tweet-top-banner.jpg"> -->
               <div class="leftAnswer">
               
               </div>

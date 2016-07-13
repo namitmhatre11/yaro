@@ -11,7 +11,7 @@ $(".toggele-btn").click(function(e){
 $(".sawaalForYaroTweet").click(function(e){
      e.preventDefault();
     if($.trim($('.sawaalForYaro').val()) == "") {
-        alert("Please enter apne sawaal for Yaro!");
+        alert("Please enter your question for Y.A.R.O using #SABKaYARO");
     } 
     else {
 
@@ -36,23 +36,23 @@ $(".sawaalForYaroTweet").click(function(e){
 function searchQuestion(tweetText) {
 
     $.ajax({
-                    url: "get_tweet.php",
-                    type: 'POST',
-                    data: { mode : 'saveTweet',tweetText:tweetText},
-                    success: function(data, textStatus, xhr) {
-                          if($.trim(data) !="") {
-                                /*data = JSON.parse(data);*/
-                                alert(data);
+        url: "get_tweet.php",
+        type: 'POST',
+        data: { mode : 'saveTweet',tweetText:tweetText},
+        success: function(data, textStatus, xhr) {
+              if($.trim(data) !="") {
+                    /*data = JSON.parse(data);*/
+                    alert(data);
 
-                                
-                          }
-                          return false;
-                    },
-                  error:function(){
-                    alert("Something went wrong.");
-                    return false;
-                  }
-                });
+                    
+              }
+              return false;
+        },
+      error:function(){
+        alert("Something went wrong.");
+        return false;
+      }
+    });
 
     return false;
 
