@@ -93,5 +93,4 @@ body {margin-bottom: 131px;background-image: url('../img/main-bg.jpg');backgroun
   .logo-wrpr{position: relative;}
   .logo-wrpr:after {position: absolute;content: '';width: 204px;height: 282px;right: -22px;top: 2px;background-image: url('../img/yaro-mob-img.png');z-index: -1;}
   .lauch-date-wrpr:after{display: none;}
-
 }
