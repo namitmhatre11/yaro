@@ -31,6 +31,7 @@
 }
 html {position: relative;min-height: 100%;}
 body {margin-bottom: 131px;background-image: url('../img/main-bg.jpg');background-size: cover;background-position: center;background-repeat: no-repeat;font-family: 'Roboto-Regular';padding-bottom: 30px;}
+.no-bg{background-image: none;}
 .sony-sab-logo{position: absolute;right: 0;top: 30px;}
 .yaro-txt-sub{font-size: 20px;color: #fff;font-family: 'Roboto-Bold';text-shadow: 0 1px 0 rgba(0, 0, 0, 0.52);margin-top: 5px;}
 .sabke-txt{font-size: 17px;font-family: 'Roboto-Medium';color: #fff;;text-shadow: 0 1px 0 rgba(0, 0, 0, 0.52);margin:10px 0;}

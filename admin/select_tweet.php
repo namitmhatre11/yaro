@@ -8,9 +8,9 @@
 <html>
 <head>
 	<title></title>
-	<link rel="stylesheet" href="../style.css" type="text/css" />
+	<link rel="stylesheet" href="../css/style.css" type="text/css" />
 </head>
-<body>
+<body class="no-bg">
 	<form method="POST" id="tweet_entries" action="">
 		<table align="center" width="75%"  border="1">
 			<tr>
