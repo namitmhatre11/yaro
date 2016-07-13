@@ -24,7 +24,7 @@ class paginate
                      <td><?php echo $row['question']; ?></td>
                      <td><?php echo $row['ans']; ?></td>
                      <td><?php echo empty($row['reply_img']) ? 'No' : 'Yes'; ?></td>
-                     <td style="text-align:center;"><input type="checkbox" name="is_banner" <?php echo $check = $row['show_on_banner'] == 1 ? 'checked' : ''; ?>><!-- Select to show on banner. --></td>
+                     <td style="text-align:center;"><input class="banner_show" type="checkbox" name="banner_show" value="<?php echo $row['id'];?>" <?php echo $check = $row['show_on_banner'] == 1 ? 'checked' : ''; ?>><!-- Select to show on banner. --></td>
                    </tr>
                    <?php
                 }
@@ -93,7 +93,9 @@ class paginate
         echo "<a href='".$self."?page_no=".$next."'>Next</a>&nbsp;&nbsp;";
         echo "<a href='".$self."?page_no=".$total_no_of_pages."'>Last</a>&nbsp;&nbsp;";
    }
-   ?></td></tr><?php
+   ?>
+   <!-- <button style="float:right; margin:10px;" type="submit" form="tweet_entries" value="Submit">Submit</button> -->
+   </td></tr><?php
   }
  }
 }
