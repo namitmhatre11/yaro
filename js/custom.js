@@ -10,6 +10,7 @@ $(".toggele-btn").click(function(e){
 });
 $(".sawaalForYaroTweet").click(function(e){
      e.preventDefault();
+      $('.yaraTweetAnswer').html("…Har cheez ka jawab dega #SABKaYARO!");
      var sawaalText = $.trim($('.sawaalForYaro').val());
     if(sawaalText == "") {
         alert("Please enter your question for Y.A.R.O using #SABKaYARO.");
