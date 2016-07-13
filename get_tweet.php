@@ -9,7 +9,7 @@ if($_POST && isset($_POST['mode'])){
 
 	if($_POST['mode'] == "saveTweet"){
 
-	$logfile = false;	
+	$logfile = true;	
 	$resfileName = "log_".date('d_m_Y_H_i_s').".txt";
 	$myfile = fopen("log/".$resfileName, "w") or die("Unable to open file!");	
 		
