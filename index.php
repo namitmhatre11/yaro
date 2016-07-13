@@ -73,11 +73,11 @@
             </div>
             <div class="input-container">
               <textarea placeholder="Pucho apne sawaal" class="sawaalForYaro" ></textarea>
-              <button class="btn btn-tweet sawaalForYaroTweet">Tweet</button>              
+              <button class="btn btn-tweet sawaalForYaroTweet" >Tweet</button>              
             </div>
           </div>
           <div class="rght-btm-wrpr">
-            <div class="rght-btm-content">
+            <div class="rght-btm-content yaraTweetAnswer">
               …Har cheez ka jawab dega #SABKaYARO!
             </div>
             <div class="rght-btm-footer">

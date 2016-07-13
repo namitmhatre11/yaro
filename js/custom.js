@@ -8,12 +8,15 @@ setInterval(function(){ ajaxcall(); }, 10000);
 
 $(".sawaalForYaroTweet").click(function(e){
      e.preventDefault();
-    if($.trim($('.sawaalForYaro').val()) == "") {
+     var sawaalText = $.trim($('.sawaalForYaro').val());
+    if(sawaalText == "") {
         alert("Please enter apne sawaal for Yaro!");
     } 
     else {
 
-    var title  = encodeURIComponent($('.sawaalForYaro').val());
+    sawaalText = "#SABKaYaroDemo1 " + sawaalText;
+
+    var title  = encodeURIComponent(sawaalText);
     var loc = "http://localhost/yaro/";
     //We trigger a new window with the Twitter dialog, in the middle of the page
     var popupWindow = window.open('http://twitter.com/share?url=' + loc + '&text=' + title, 'twitterwindow', 'height=450, width=550, top='+($(window).height()/2 - 225) +', left='+$(window).width()/2 +', toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
@@ -21,7 +24,7 @@ $(".sawaalForYaroTweet").click(function(e){
     var pollTimer = window.setInterval(function() {
     if (popupWindow.closed !== false) { // !== is required for compatibility with Opera
         window.clearInterval(pollTimer);
-        searchQuestion($('.sawaalForYaro').val());
+        searchQuestion(sawaalText);
     }
     }, 200);
 
@@ -32,22 +35,32 @@ $(".sawaalForYaroTweet").click(function(e){
 });
 
 function searchQuestion(tweetText) {
-
+    var that = $('.sawaalForYaroTweet');
+    that.html("<i class='fa fa-circle-o-notch fa-spin'></i> Processing Sawal...");
+    that.attr("disabled", true);
     $.ajax({
                     url: "get_tweet.php",
                     type: 'POST',
                     data: { mode : 'saveTweet',tweetText:tweetText},
                     success: function(data, textStatus, xhr) {
                           if($.trim(data) !="") {
-                                /*data = JSON.parse(data);*/
-                                alert(data);
-
+                                data = JSON.parse($.trim(data));
                                 
+                                if(data.status == true) {
+                                    $('.yaraTweetAnswer').html(data.dataResponse[1]); 
+                                }
+                                else {
+                                    alert(data.message);    
+                                }    
+                                that.html("Tweet"); 
+                                that.attr("disabled", false);                         
                           }
                           return false;
                     },
                   error:function(){
-                    alert("Something went wrong.");
+                    console.log("Something went wrong.");
+                    that.html("Tweet");
+                    that.attr("disabled", false);
                     return false;
                   }
                 });
