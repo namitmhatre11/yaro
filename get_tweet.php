@@ -51,7 +51,7 @@ if($_POST && isset($_POST['mode'])){
 
 		$next = $_POST['next'];
 		try{
-			$stmt = $conn->prepare("SELECT user_screen_name, profile_photo, question, ans, reply_img FROM yaro_tweets_data LIMIT :incrementValue,1"); 
+			$stmt = $conn->prepare("SELECT user_screen_name, profile_photo, question, ans, reply_img FROM yaro_tweets_data order by id desc LIMIT :incrementValue,1"); 
 			$stmt->bindValue(':incrementValue', intval($next+1), PDO::PARAM_INT);
 			$stmt->execute();
 			$result = $stmt->fetch(PDO::FETCH_NUM);
@@ -59,7 +59,7 @@ if($_POST && isset($_POST['mode'])){
 			if(!$result) {
 
 			$next = 0;
-			$stmt = $conn->prepare("SELECT user_screen_name, profile_photo, question, ans, reply_img FROM yaro_tweets_data LIMIT :incrementValue,1"); 
+			$stmt = $conn->prepare("SELECT user_screen_name, profile_photo, question, ans, reply_img FROM yaro_tweets_data order by id desc LIMIT :incrementValue,1"); 
 			$stmt->bindValue(':incrementValue', intval($next+1), PDO::PARAM_INT);
 			$stmt->execute();
 			$result = $stmt->fetch(PDO::FETCH_NUM);
