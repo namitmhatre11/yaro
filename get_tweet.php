@@ -28,15 +28,10 @@ if($_POST && isset($_POST['mode'])){
 
 	if($tweetTiD) {
 		writeLog("tweetId done");
-		$variable = array();
-
-		$variable['question'] = $tweetText;
-		$variable['tweet_id'] = $tweetTiD;
-
-		$query = $conn->prepare("INSERT INTO `yaro_tweet_question` (`".implode("`,`", array_keys($variable))."`) VALUES ('".implode("','", $variable)."')");
-
-		$query->execute();
-		//fetchtweets();
+		
+		$query = $conn->prepare("INSERT INTO `yaro_tweet_question` (`question`,`tweet_id`) VALUES (:question,:tweet_id)");
+		$query->execute(array(":question"=>$tweetText,":tweet_id"=>$tweetTiD));
+		
 		$responseData = fetchTweetResponse($tweetTiD);
 		$responseVar['dataResponse'] = $responseData;
 		$responseVar['status'] = true;
@@ -54,16 +49,18 @@ if($_POST && isset($_POST['mode'])){
 	}
 	else if($_POST['mode'] == "slideTweet") {
 
-		$next = $_REQUEST['next'];
+		$next = $_POST['next'];
 		try{
-			$stmt = $conn->prepare("SELECT user_screen_name, profile_photo, question, ans, reply_img FROM yaro_tweets_data LIMIT ".($next+1).",1"); 
+			$stmt = $conn->prepare("SELECT user_screen_name, profile_photo, question, ans, reply_img FROM yaro_tweets_data LIMIT :incrementValue,1"); 
+			$stmt->bindValue(':incrementValue', intval($next+1), PDO::PARAM_INT);
 			$stmt->execute();
 			$result = $stmt->fetch(PDO::FETCH_NUM);
 			
 			if(!$result) {
 
 			$next = 0;
-			$stmt = $conn->prepare("SELECT user_screen_name, profile_photo, question, ans, reply_img FROM yaro_tweets_data LIMIT ".($next+1).",1"); 
+			$stmt = $conn->prepare("SELECT user_screen_name, profile_photo, question, ans, reply_img FROM yaro_tweets_data LIMIT :incrementValue,1"); 
+			$stmt->bindValue(':incrementValue', intval($next+1), PDO::PARAM_INT);
 			$stmt->execute();
 			$result = $stmt->fetch(PDO::FETCH_NUM);
 
@@ -122,8 +119,8 @@ function getTweetByText($tweetText) {
 
 function fetchTweetResponse($tweetID) {
 
-		$stmt = $GLOBALS['conn']->prepare("SELECT reply_id,ans FROM yaro_tweets_data where tweet_id = '".$tweetID."'  ORDER BY `timestamp` DESC LIMIT 1"); 
-		$stmt->execute();
+		$stmt = $GLOBALS['conn']->prepare("SELECT reply_id,ans FROM yaro_tweets_data where tweet_id = :tweet_id ORDER BY `timestamp` DESC LIMIT 1"); 
+		$stmt->execute(array(":tweet_id"=>$tweetTiD));
 		$result = $stmt->fetch(PDO::FETCH_NUM);
 		writeLog("fetchTweetResponse");
 		if(!isset($result)){
@@ -143,82 +140,6 @@ function fetchTweetResponse($tweetID) {
 			writeLog("fetchTweetResponse result ok".json_encode($result));
 			return $result;
 		}
-
-}
-function fetchtweets() {
-
-
-	try {
-
-			$stmt = $GLOBALS['conn']->prepare("SELECT reply_id FROM yaro_tweets_data ORDER BY reply_id DESC LIMIT 1"); 
-			$stmt->execute();
-			$result = $stmt->fetch(PDO::FETCH_NUM);
-
-			$since = isset($result) ? '&since_id='.$result[0] : '';
-
-			$que_url = 'https://api.twitter.com/1.1/statuses/show.json';
-
-
-			$response = $GLOBALS['twitterAPI']->setGetfield('?q=#SABKaYARO YARO Says&count=100'.$since)
-			->buildOauth('https://api.twitter.com/1.1/search/tweets.json', 'GET')
-			->performRequest();
-
-			$result = json_decode($response);
-
-			$data=array();
-
-			foreach ($result as $key => $value) {
-
-			if(is_array($value)){
-			foreach ($value as $key1 => $value1) {
-				
-				$reply_img="";
-				if(property_exists($value1->entities, 'media')){
-					$reply_img = $value1->entities->media[0]->media_url;
-				}
-
-				
-				$que_getfield = '?id='.$value1->in_reply_to_status_id;
-				if($que_getfield){
-					$que_response = $GLOBALS['twitterAPI']->setGetfield($que_getfield)
-											->buildOauth($que_url, 'GET')
-											->performRequest();
-
-					$que_response = json_decode($que_response);
-
-					if(!property_exists($que_response, 'errors')){
-						$data[]=array('user_id'=>$que_response->user->id,
-						'user_name'=>$que_response->user->name,
-						'user_screen_name'=>$que_response->user->screen_name,
-						'profile_photo'=>$que_response->user->profile_image_url,
-						'question'=>$que_response->text,
-						'ans'=>$value1->text,
-						'reply_img'=>$reply_img,
-						'tweet_id'=>$value1->in_reply_to_status_id,
-						'tweet_time'=>$que_response->created_at,
-						'reply_id'=>$value1->id,
-						'reply_time'=>$value1->created_at);
-					}
-				}
-			}
-			}
-			}
-
-			if(!empty($data)){
-
-				$values = "";
-				foreach ($data as $key => $value) {
-				$newValue = "('".implode("','", $value)."')";
-				$values .= !empty($values) ? ",".$newValue : $newValue;
-				}
-
-				$query = $GLOBALS['conn']->prepare("INSERT INTO `yaro_tweets_data` (`".implode("`,`", array_keys($data[0]))."`) VALUES $values");
-
-				$query->execute();
-			}
-
-	}
-	catch(Exception $e) {}
 
 }
 function writeLog($logText) {
