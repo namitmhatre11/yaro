@@ -2,18 +2,6 @@
 	require_once('../config.php');
 	require_once('class.paging.php');
 	$paginate = new paginate($conn);
-
-	//$stmt = $GLOBALS['conn']->prepare("SELECT user_screen_name, question, ans, reply_img FROM yaro_tweets_data ORDER BY reply_id DESC"); 
-	//$stmt->execute();
-	//$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-	//echo '<pre>';
-	//var_dump($result);
-	if (!empty($_POST)){
-		//sd
-		echo '<pre>';
-		print_r($_POST);
-	}
-
 ?>
 
 <!DOCTYPE html>
@@ -56,13 +44,8 @@
 	<script src="../js/jquery.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			//alert('hi');
 			$('.banner_show').change(function() {
-				//alert('hi');
-				//alert($(this).is(":checked"));
-				//alert($(this).val());
 				var tweet_id = $(this).val();
-				console.log(tweet_id);
 				var is_checked = $(this).is(":checked");
 				
 				$.ajax({
@@ -80,8 +63,6 @@
                     return false;
                   }
                 });
-
-
 			});
 		});
 	</script>
