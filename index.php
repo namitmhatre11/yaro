@@ -60,7 +60,7 @@
             </div>
           </div>
           <div class="visible-xs visible-sm clearfix text-center">
-            <button class="ask-que-btn btn toggele-btn">Puchiye Sawal apane Y.A.R.O se</button>
+            <button class="ask-que-btn btn toggele-btn">Puchiye sawaal apne Y.A.R.O se</button>
           </div>
         </div>        
         <div class="col-md-3 col-xs-12 right-main-wrpr">
