@@ -15,13 +15,13 @@ $(".sawaalForYaroTweet").click(function(e){
     if(sawaalText == "") {
         alert("Please enter your question for Y.A.R.O using #SABKaYARO.");
     } 
-    else if(sawaalText.search("#SABKaYaroDemo1") == -1) {
+    else if(sawaalText.search("#SABKaYaro") == -1) {
         alert("Please enter hashtag #SABKaYARO.");    
     }   
     else {
        
     var title  = encodeURIComponent(sawaalText);
-    var loc = "http://localhost/yaro/";
+    var loc = "http://www.sabtv.com/sabkayaro/";
     var popupWindow = window.open('http://twitter.com/share?url=' + loc + '&text=' + title, 'twitterwindow', 'height=450, width=550, top='+($(window).height()/2 - 225) +', left='+$(window).width()/2 +', toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
     
     var pollTimer = window.setInterval(function() {
@@ -73,7 +73,9 @@ function searchQuestion(tweetText) {
 }
 
 function ajaxcall() {
-$.post("get_tweet.php",
+    var d = new Date();
+    var n = d.getTime();
+$.post("get_tweet.php?ver="+n,
     {
         next:nextVars,
         mode: 'slideTweet'

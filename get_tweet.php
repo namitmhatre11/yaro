@@ -15,9 +15,7 @@ if($_POST && isset($_POST['mode'])){
 		
 	require_once('tweetConfig.php');
 
-	$loc = "http://localhost/yaro/";
-	
-	$tweetText = $_POST['tweetText']." ".$loc;	
+	$tweetText = $_POST['tweetText'];	
 
 	writeLog("tweetText: ".$tweetText);
 
@@ -52,7 +50,7 @@ if($_POST && isset($_POST['mode'])){
 		$next = $_POST['next'];
 		try{
 			$stmt = $conn->prepare("SELECT user_screen_name, profile_photo, question, ans, reply_img FROM yaro_tweets_data order by id desc LIMIT :incrementValue,1"); 
-			$stmt->bindValue(':incrementValue', intval($next+1), PDO::PARAM_INT);
+			$stmt->bindValue(':incrementValue', intval($next), PDO::PARAM_INT);
 			$stmt->execute();
 			$result = $stmt->fetch(PDO::FETCH_NUM);
 			
@@ -60,7 +58,7 @@ if($_POST && isset($_POST['mode'])){
 
 			$next = 0;
 			$stmt = $conn->prepare("SELECT user_screen_name, profile_photo, question, ans, reply_img FROM yaro_tweets_data order by id desc LIMIT :incrementValue,1"); 
-			$stmt->bindValue(':incrementValue', intval($next+1), PDO::PARAM_INT);
+			$stmt->bindValue(':incrementValue', intval($next), PDO::PARAM_INT);
 			$stmt->execute();
 			$result = $stmt->fetch(PDO::FETCH_NUM);
 
@@ -120,7 +118,7 @@ function getTweetByText($tweetText) {
 function fetchTweetResponse($tweetID) {
 
 		$stmt = $GLOBALS['conn']->prepare("SELECT reply_id,ans FROM yaro_tweets_data where tweet_id = :tweet_id ORDER BY `timestamp` DESC LIMIT 1"); 
-		$stmt->execute(array(":tweet_id"=>$tweetTiD));
+		$stmt->execute(array(":tweet_id"=>$tweetID));
 		$result = $stmt->fetch(PDO::FETCH_NUM);
 		writeLog("fetchTweetResponse");
 		if(!isset($result)){
